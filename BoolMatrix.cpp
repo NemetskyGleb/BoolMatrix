@@ -53,9 +53,9 @@ BoolMatrix& BoolMatrix::operator=(BoolMatrix &X)
 			m = X.m;
 			BV = new BoolVector[m];
 		}
-		for (int i = 0; i<m; i++)
-			BV[i] = X.BV[i];
 		n = X.n;
+		for (int i = 0; i < m; i++)
+			BV[i] = X.BV[i];
 	}
 	return *this;
 }
@@ -223,7 +223,7 @@ BoolMatrix BoolMatrix::ShiftRight(int i, int kol)
 {
 	BoolMatrix Res = *this;
 	Res.BV[i] >> kol;
-	return Res;
+	return *this = Res;
 }
 BoolMatrix& BoolMatrix::ShiftRightEq(int i, int kol)
 //сдвиг вправо эл-тов i  строки на kol эл-тов, изменяется *this
@@ -232,9 +232,10 @@ BoolMatrix& BoolMatrix::ShiftRightEq(int i, int kol)
 	return *this;
 }
 BoolMatrix BoolMatrix::ShiftLeft(int i, int kol){
-	BoolMatrix Res = *this;
+	BoolMatrix Res(*this);
 	Res.BV[i] <<= kol;
-	return Res;
+	//std::cout << Res;
+	return *this = Res;
 }
 BoolMatrix& BoolMatrix::ShiftLeftEq(int i, int kol){
 	BV[i] << kol;

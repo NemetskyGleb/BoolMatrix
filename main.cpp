@@ -6,9 +6,10 @@ int main(){
 	BoolMatrix B(6,6); 
 	~B;
 	B.SetUp0(0, 0);
-	BoolVector x(B.Xor());
-	B.ShiftLeft(0, 2);
+	B.SetUp0(1, 0);
 	cout << B;
+	BoolVector A(B.Xor());
+	cout << A;
 	cin.get();
 	return 0;
 }
