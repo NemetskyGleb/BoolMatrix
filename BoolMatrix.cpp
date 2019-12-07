@@ -4,7 +4,7 @@ int BoolMatrix::Max(char **s, int M)
 {
 	int n = strlen(s[0]);
 	for (int i = 1; i < M; i++)
-	if (n < strlen(s[i]))
+		if (n < strlen(s[i]))
 			n = strlen(s[i]);
 	return n;
 }
@@ -223,7 +223,7 @@ BoolMatrix BoolMatrix::ShiftRight(int i, int kol)
 {
 	BoolMatrix Res = *this;
 	Res.BV[i] >> kol;
-	return Res;
+	return *this = Res;
 }
 BoolMatrix& BoolMatrix::ShiftRightEq(int i, int kol)
 //сдвиг вправо эл-тов i  строки на kol эл-тов, изменяется *this
@@ -234,7 +234,7 @@ BoolMatrix& BoolMatrix::ShiftRightEq(int i, int kol)
 BoolMatrix BoolMatrix::ShiftLeft(int i, int kol){
 	BoolMatrix Res = *this;
 	Res.BV[i] <<= kol;
-	return Res;
+	return *this = Res;
 }
 BoolMatrix& BoolMatrix::ShiftLeftEq(int i, int kol){
 	BV[i] << kol;
